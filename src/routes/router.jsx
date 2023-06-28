@@ -1,12 +1,13 @@
 import { createBrowserRouter } from 'react-router-dom';
-import Header from '../layouts/Header';
+
+import SideBar from '../layouts/SideBar';
 import NewClient from '../pages/NewClient';
 import Home from '../pages/Home';
 
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Header />,
+        element: <SideBar />,
         children: [
             {
                 index: true,
