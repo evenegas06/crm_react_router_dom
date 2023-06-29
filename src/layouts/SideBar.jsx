@@ -1,8 +1,8 @@
-import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
+import { NavLink, Outlet, /* useLocation */ } from "react-router-dom";
 
 const SideBar = () => {
 
-    const location = useLocation();
+    // const location = useLocation();
 
     return (
         <div className="md:flex md:min-h-screen">

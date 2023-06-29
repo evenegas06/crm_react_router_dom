@@ -2,7 +2,9 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import SideBar from '../layouts/SideBar';
 import NewClient from '../pages/NewClient';
-import Home from '../pages/Home';
+import Clients from '../pages/Clients';
+
+import { clients } from '../utils/data';
 
 const router = createBrowserRouter([
     {
@@ -11,7 +13,10 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <Home />
+                element: <Clients />,
+                loader: () => {
+                    return clients;
+                }
             },
             {
                 path: '/clientes/nuevo',
