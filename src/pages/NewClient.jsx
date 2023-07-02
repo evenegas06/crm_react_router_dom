@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import Form from "../components/Form";
+import { Form, useNavigate } from "react-router-dom";
+import FormLayout from "../components/Form";
 
 const NewClient = () => {
     /* ----- Hooks ----- */
@@ -25,15 +25,17 @@ const NewClient = () => {
             </div>
 
             <div className="bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10">
-                <form>
-                    <Form />
+                <Form
+                    method="POST"
+                >
+                    <FormLayout />
 
                     <input
                         type="submit"
                         value="Registrar cliente"
                         className="mt-5 w-full bg-blue-800 p-3 uppercase font-bold text-white text-lg"
                     />
-                </form>
+                </Form>
             </div>
         </>
     );

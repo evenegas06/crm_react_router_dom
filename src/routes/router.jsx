@@ -20,7 +20,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/clientes/nuevo',
-                element: <NewClient />
+                element: <NewClient />,
+                action: async ({ request }) => {
+                    const formData = await request.formData();
+                    
+                    console.log('Submit al formulario');
+                }
             }
         ]
     },
