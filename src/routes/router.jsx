@@ -4,7 +4,8 @@ import SideBar from '../layouts/SideBar';
 import NewClient from '../pages/NewClient';
 import Clients from '../pages/Clients';
 
-import { clients } from '../utils/data';
+import { getClients } from '../api/clients';
+
 
 const router = createBrowserRouter([
     {
@@ -15,6 +16,7 @@ const router = createBrowserRouter([
                 index: true,
                 element: <Clients />,
                 loader: () => {
+                    const clients = getClients()
                     return clients;
                 }
             },
