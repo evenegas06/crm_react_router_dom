@@ -23,8 +23,22 @@ const router = createBrowserRouter([
                 element: <NewClient />,
                 action: async ({ request }) => {
                     const formData = await request.formData();
-                    
-                    console.log('Submit al formulario');
+                    const data = Object.fromEntries(formData);
+
+                    /* Validation */
+                    const errors = [];
+                    if (Object.values(data).includes('')) {
+                        errors.push('Todos los campos son obligatorios.');
+                    }
+
+                    let regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+                    if (!regex.test(formData.get('email'))) {
+                        errors.push('El email no es valido.');
+                    }
+
+                    if (Object.keys(errors).length) {
+                        return errors;
+                    }
                 }
             }
         ]

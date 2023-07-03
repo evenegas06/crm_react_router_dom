@@ -1,9 +1,11 @@
-import { Form, useNavigate } from "react-router-dom";
+import { Form, useActionData, useNavigate } from "react-router-dom";
 import FormLayout from "../components/Form";
+import ErrorAlert from "../components/ErrorAlert";
 
 const NewClient = () => {
     /* ----- Hooks ----- */
     const navigate = useNavigate();
+    const errors = useActionData();
 
     return (
         <>
@@ -25,8 +27,18 @@ const NewClient = () => {
             </div>
 
             <div className="bg-white shadow rounded-md md:w-3/4 mx-auto px-5 py-10">
+
+                {errors?.length && errors.map((item, index) => {
+                    return (
+                        <ErrorAlert key={index}>
+                            {item}
+                        </ErrorAlert>
+                    );
+                })}
+
                 <Form
                     method="POST"
+                    noValidate
                 >
                     <FormLayout />
 
