@@ -1,10 +1,11 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, redirect } from 'react-router-dom';
 
 import SideBar from '../layouts/SideBar';
 import NewClient from '../pages/NewClient';
 import Clients from '../pages/Clients';
 
-import { getClients } from '../api/clients';
+import { addClient, getClients } from '../api/clients';
+import ErrorPage from '../pages/ErrorPage';
 
 
 const router = createBrowserRouter([
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
                 loader: () => {
                     const clients = getClients()
                     return clients;
-                }
+                },
+                errorElement: <ErrorPage />
             },
             {
                 path: '/clientes/nuevo',
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
                     if (Object.keys(errors).length) {
                         return errors;
                     }
+
+                    await addClient(data);
+
+                    return redirect('/');
                 }
             }
         ]
