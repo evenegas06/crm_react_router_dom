@@ -1,4 +1,4 @@
-const Form = () => {
+const Form = ({ client }) => {
     return (
         <>
             <div className="mb-4">
@@ -13,6 +13,7 @@ const Form = () => {
                     id="name"
                     name="name"
                     placeholder="Nombre del cliente"
+                    defaultValue={client?.name}
                     className="mt-2 block w-full p-3 bg-gray-50"
                 />
             </div>
@@ -29,6 +30,7 @@ const Form = () => {
                     id="company"
                     name="company"
                     placeholder="Empresa del cliente"
+                    defaultValue={client?.company}
                     className="mt-2 block w-full p-3 bg-gray-50"
                 />
             </div>
@@ -45,6 +47,7 @@ const Form = () => {
                     id="email"
                     name="email"
                     placeholder="Correo electrónico del cliente"
+                    defaultValue={client?.email}
                     className="mt-2 block w-full p-3 bg-gray-50"
                 />
             </div>
@@ -61,6 +64,7 @@ const Form = () => {
                     id="phone"
                     name="phone"
                     placeholder="Teléfono del cliente"
+                    defaultValue={client?.phone}
                     className="mt-2 block w-full p-3 bg-gray-50"
                 />
             </div>
@@ -76,6 +80,7 @@ const Form = () => {
                     id="notes"
                     name="notes"
                     placeholder="Notas del cliente"
+                    defaultValue={client?.notes}
                     className="mt-2 block w-full p-3 bg-gray-50 h-40 align-self"
                 />
             </div>
