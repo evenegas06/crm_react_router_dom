@@ -27,14 +27,6 @@
       "phone": "6598562154",
       "email": "evr@mail.com",
       "company": "EVR Inc."
-    },
-    {
-      "name": "Jose actualizado",
-      "company": "company sin name",
-      "email": "email@mail.com.mx",
-      "phone": "2165988754",
-      "notes": "Lorem ipsum dolor sit amet...",
-      "id": 5
     }
   ]
 }

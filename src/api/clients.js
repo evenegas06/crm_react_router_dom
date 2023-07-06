@@ -67,3 +67,20 @@ export const updateClient = async (id, data) => {
         console.error(error);
     }
 };
+
+/**
+ * Delete a client by id.
+ * 
+ * @param {string} id Client id
+ */
+export const deleteClient = async (id) => {
+    try {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/clientes/${id}`, {
+            method: 'DELETE'
+        });
+
+        await response.json();
+    } catch (error) {
+        console.error(error);
+    }
+};

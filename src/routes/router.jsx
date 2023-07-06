@@ -4,7 +4,7 @@ import SideBar from '../layouts/SideBar';
 import NewClient from '../pages/NewClient';
 import Clients from '../pages/Clients';
 
-import { addClient, getClient, getClients, updateClient } from '../api/clients';
+import { addClient, deleteClient, getClient, getClients, updateClient } from '../api/clients';
 import ErrorPage from '../pages/ErrorPage';
 import EditClient from '../pages/EditClient';
 
@@ -86,6 +86,14 @@ const router = createBrowserRouter([
                     }
 
                     await updateClient(params.client_id, data);
+
+                    return redirect('/');
+                },
+            },
+            {
+                path: '/clientes/:client_id/eliminar',
+                action: async ({ params }) => {
+                    await deleteClient(params.client_id);
 
                     return redirect('/');
                 },

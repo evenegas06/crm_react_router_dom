@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 
 const ClientItem = ({ client }) => {
 
@@ -42,12 +42,22 @@ const ClientItem = ({ client }) => {
                     Editar
                 </button>
 
-                <button
-                    type="button"
-                    className="text-red-600 hover:text-red-700 uppercase font-bold text-xs"
+                <Form
+                    method="POST"
+                    action={`/clientes/${id}/eliminar`}
+                    onSubmit={(event) => {
+                        if (!confirm('¿Esta seguro de eliminar este registro?')) {
+                            event.preventDefault();
+                        }
+                    }}
                 >
-                    Eliminar
-                </button>
+                    <button
+                        type="submit"
+                        className="text-red-600 hover:text-red-700 uppercase font-bold text-xs"
+                    >
+                        Eliminar
+                    </button>
+                </Form>
             </td>
         </tr>
     );
