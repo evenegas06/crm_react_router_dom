@@ -16,7 +16,7 @@ const ErrorPage = () => {
             </p>
 
             <p className="text-center">
-                {error.message}
+                {error.statusText || error.message}
             </p>
         </div>
     );

@@ -4,8 +4,9 @@ import SideBar from '../layouts/SideBar';
 import NewClient from '../pages/NewClient';
 import Clients from '../pages/Clients';
 
-import { addClient, getClients } from '../api/clients';
+import { addClient, getClient, getClients } from '../api/clients';
 import ErrorPage from '../pages/ErrorPage';
+import EditClient from '../pages/EditClient';
 
 
 const router = createBrowserRouter([
@@ -17,10 +18,10 @@ const router = createBrowserRouter([
                 index: true,
                 element: <Clients />,
                 loader: () => {
-                    const clients = getClients()
+                    const clients = getClients();
                     return clients;
                 },
-                errorElement: <ErrorPage />
+                errorElement: <ErrorPage />,
             },
             {
                 path: '/clientes/nuevo',
@@ -47,8 +48,25 @@ const router = createBrowserRouter([
                     await addClient(data);
 
                     return redirect('/');
-                }
-            }
+                },
+            },
+            {
+                path: '/clientes/:client_id/editar',
+                element: <EditClient />,
+                loader: async ({ params }) => {
+                    const client = await getClient(params.client_id);
+
+                    if (Object.values(client).length === 0) {
+                        throw new Response('', {
+                            status: 404,
+                            statusText: `El cliente con id ${params.client_id} no existe.`
+                        });
+                    }
+
+                    return client;
+                },
+                errorElement: <ErrorPage />
+            },
         ]
     },
 ]);

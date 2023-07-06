@@ -24,10 +24,17 @@ export const addClient = async (data) => {
                 'Content-Type': 'application/json'
             }
         });
-        
+
         await response.json();
 
     } catch (error) {
         console.error(error);
     }
+};
+
+export const getClient = async (id) => {
+    const response = await fetch(`${import.meta.env.VITE_API_URL}/clientes/${id}`);
+    const data = await response.json();
+
+    return data;
 };
